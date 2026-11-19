@@ -1,0 +1,31 @@
+# Python 編譯暫存與測試快取
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Python 虛擬環境
+.venv/
+venv/
+ENV/
+env/
+
+# 環境變數與敏感設定檔
+.env
+.env.*
+
+# 前端套件暫存（保留已預編譯之 frontend/dist/）
+node_modules/
+
+# 使用者上傳之大型原始 PDF／公文歸檔與暫存檔（避免誤傳機關敏感檔案至 GitHub）
+data/uploads/
+*.tmp.json
+
+# 作業系統與編輯器暫存檔
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
