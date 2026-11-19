@@ -14,6 +14,7 @@ import datetime
 import io
 import re
 import uuid
+import warnings
 import xml.etree.ElementTree as ET
 import zipfile
 
@@ -91,7 +92,13 @@ def _extract_pdf_text(file_bytes: bytes) -> Tuple[str, int, str]:
     method = "pypdf"
 
     try:
-        from pypdf import PdfReader
+        with warnings.catch_warnings():
+            warnings.filterwarnings(
+                "ignore",
+                message=r".*ARC4 has been moved.*",
+                module=r"pypdf\._crypt_providers.*",
+            )
+            from pypdf import PdfReader
 
         reader = PdfReader(io.BytesIO(file_bytes))
         page_count = len(reader.pages)
